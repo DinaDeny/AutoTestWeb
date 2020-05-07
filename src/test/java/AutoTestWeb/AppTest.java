@@ -7,8 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.w3c.dom.html.HTMLSelectElement;
+
+import java.util.List;
 
 public class AppTest {
 
@@ -24,13 +28,22 @@ public class AppTest {
         firstNameField.click();
         firstNameField.sendKeys("Jenifer");
         firstNameField.clear();
+        firstNameField.sendKeys("VeryLongTestFirstNameWithAnyCharacters1!@#$%^&*");
+        firstNameField.clear();
 
         WebElement lastNameField = driver.findElement(By.id("LastName"));
         lastNameField.click();
         lastNameField.sendKeys("Aniston");
+        firstNameField.clear();
+        lastNameField.sendKeys("VeryLongTestLastNameWithAnyCharacters1!@#$%^&*");
         lastNameField.clear();
 
-        
+        WebElement Category = driver.findElement(By.id("Category"));
+        Select select = new Select(Category);
+        select.getAllSelectedOptions();
+        select.getFirstSelectedOption();
+        select.selectByValue("Science");
+
 
         driver.navigate().refresh();
         driver.quit();
