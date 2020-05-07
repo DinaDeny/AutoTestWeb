@@ -7,11 +7,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 import org.w3c.dom.html.HTMLSelectElement;
 
+import javax.swing.*;
 import java.util.List;
 
 public class AppTest {
@@ -43,6 +46,10 @@ public class AppTest {
         select.getAllSelectedOptions();
         select.getFirstSelectedOption();
         select.selectByValue("Science");
+
+        WebElement SaveButton = driver.findElement(By.id("Save"));
+        Actions action = new Actions (driver);
+        action.doubleClick(SaveButton);
 
 
         driver.navigate().refresh();
