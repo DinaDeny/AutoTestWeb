@@ -24,7 +24,7 @@ public class AppTest {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("https://www.ranorex.com/web-testing-examples/vip/");
     }
-    @Test()
+    @Test
     public void myTest() {
         WebElement firstNameField = driver.findElement(By.id("FirstName"));
         firstNameField.click();
@@ -54,16 +54,20 @@ public class AppTest {
 
         }
 
+        @Test
+        public void myTest3(){
+        WebElement Gender = driver.findElement(By.name("Gender"));
+        WebElement value1 = driver.findElement(By.name("Female"));
+        WebElement value2 = driver.findElement(By.name("Male"));
+        value2.click();
+    }
+
          @Test
-         public void myTest3(){
+         public void myTest4(){
          WebElement SaveButton = driver.findElement(By.id("Save"));
          Actions action = new Actions(driver);
          action.doubleClick(SaveButton);
         }
-
-
-
-
 
            @AfterClass
                public void tearDown() {
