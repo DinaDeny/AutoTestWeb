@@ -7,9 +7,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
 
 public class AppTest {
+
     private WebDriver driver;
 
     @Test
@@ -18,9 +20,20 @@ public class AppTest {
         driver = new ChromeDriver();
         driver.get("https://www.ranorex.com/web-testing-examples/vip/");
 
-        WebElement FirstName = driver.findElement(By.id("First_Name"));
-        WebElement LastName = driver.findElement(By.id("Last_Name"));
+        WebElement firstNameField = driver.findElement(By.id("FirstName"));
+        firstNameField.click();
+        firstNameField.sendKeys("Jenifer");
+        firstNameField.clear();
 
+        WebElement lastNameField = driver.findElement(By.id("LastName"));
+        lastNameField.click();
+        lastNameField.sendKeys("Aniston");
+        lastNameField.clear();
+
+        
+
+        driver.navigate().refresh();
+        driver.quit();
 
     }
 

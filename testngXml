@@ -3,7 +3,7 @@
 <suite name="Functional" parallel="false">
     <test name="Search">
         <classes>
-            <class name="com.AutoTestWeb.App"/>
+            <class name="com.AutoTestWeb.AppTest"/>
         </classes>
     </test>
 </suite>
