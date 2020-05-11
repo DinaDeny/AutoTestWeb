@@ -1,7 +1,6 @@
 package AutoTestWeb;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +9,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +24,7 @@ public class AppTest {
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         driver.get("https://www.ranorex.com/web-testing-examples/vip/");
     }
-    @Test
+    @Test(priority = 2)
     public void myTest() {
         WebElement firstNameField = driver.findElement(By.id("FirstName"));
         firstNameField.click();
@@ -33,7 +33,7 @@ public class AppTest {
         firstNameField.sendKeys("VeryLongTestFirstNameWithAnyCharacters1!@#$%^&*");
         firstNameField.clear();
     }
-     @Test
+     @Test(dependsOnMethods = "myTest", priority = 3)
      public void myTest1(){
         WebElement lastNameField = driver.findElement(By.id("LastName"));
         lastNameField.click();
@@ -43,7 +43,7 @@ public class AppTest {
         lastNameField.clear();
         driver.navigate().refresh();
     }
-        @Test
+        @Test(priority = 1)
         public void myTest2() {
 
             WebElement Category = driver.findElement(By.id("Category"));
@@ -54,13 +54,13 @@ public class AppTest {
 
         }
 
-        @Test
+       /* @Test
         public void myTest3(){
         WebElement Gender = driver.findElement(By.name("Gender"));
         WebElement value1 = driver.findElement(By.name("Female"));
         WebElement value2 = driver.findElement(By.name("Male"));
         value2.click();
-    }
+    }*/
 
          @Test
          public void myTest4(){
